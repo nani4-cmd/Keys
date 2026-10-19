@@ -1,6 +1,6 @@
-# BuiltByKeys video editing system
+# nani video editing system
 
-**Beginner:** follow [QUICKSTART.md](QUICKSTART.md) or the step-by-step [Windows guide](WINDOWS.md), then launch `beginner.py` (Windows: double-click `Start-BuiltByKeys.bat`). Choose footage and editing options, enter supported instructions, and click **Export MP4**. The app generates JSON internally; you do not need to write it. **Open exports folder** reveals `exports/<job>/finished.mp4` on your computer.
+**Beginner:** follow [QUICKSTART.md](QUICKSTART.md) or the step-by-step [Windows guide](WINDOWS.md), then launch `beginner.py` (Windows: double-click `Start-nani.bat`). Choose footage and editing options, enter supported instructions, and click **Export MP4**. The app generates JSON internally; you do not need to write it. **Open exports folder** reveals `exports/<job>/finished.mp4` on your computer.
 
 Supported text instructions (one per line): `Use 9:16` / `Make it vertical` / `Make a short`, `Use 16:9` / `Make it landscape`, `Use 4K` / `Export in 4K`, `Use 1080p` / `Export in 1080p`, `Remove pauses` / `Remove silence`, `Keep pauses` / `Keep match audio`, `Add subtitles` / `Generate subtitles`, `Smooth transitions` / `Use smooth transitions`, `Jump cuts` / `Use jump cuts`, `Zoom in`, `No zoom`. They override corresponding controls. Subtitles require optional Whisper installation unless you attach an existing transcript. Unknown instructions produce an error. This bounded command parser does not interpret unrestricted creative prose or detect football events; choose ranges/events and crop focus using the controls.
 
@@ -11,14 +11,14 @@ A reusable, local Python + FFmpeg editor for tech reviews and football highlight
 Requires Python 3.10+ and a full FFmpeg build (recommended 6+; tested on 7.1.5) with FFprobe, libx264, AAC and libass. Core editing needs no pip packages, API keys or external services. The optional desktop launcher also uses Python’s Tkinter; see WINDOWS.md for setup. If FFmpeg is missing on another machine, install it using your system package manager (for example `sudo apt install ffmpeg` on Debian/Ubuntu or `brew install ffmpeg` on macOS), then run `doctor` again. Use upright SDR Rec.709 source footage with square pixels. Linux, macOS and Windows Python/FFmpeg installations are supported by the command structure; this build was tested on Linux only. A font such as DejaVu Sans or Arial must be available to libass.
 
 ```sh
-python3 bbk.py doctor
+python3 nani.py doctor
 python3 make_samples.py
-python3 bbk.py plan examples/tech.json
-python3 bbk.py render examples/tech.json -o exports/my-tech.mp4
-python3 bbk.py render examples/football.json -o exports/my-football.mp4
-python3 bbk.py render examples/tech.json --format 9:16 -o exports/my-short.mp4
-python3 bbk.py render examples/football.json --format 9:16 -o exports/my-football-vertical.mp4
-python3 bbk.py render examples/tech.json --resolution 4k -o exports/my-tech-4k.mp4
+python3 nani.py plan examples/tech.json
+python3 nani.py render examples/tech.json -o exports/my-tech.mp4
+python3 nani.py render examples/football.json -o exports/my-football.mp4
+python3 nani.py render examples/tech.json --format 9:16 -o exports/my-short.mp4
+python3 nani.py render examples/football.json --format 9:16 -o exports/my-football-vertical.mp4
+python3 nani.py render examples/tech.json --resolution 4k -o exports/my-tech-4k.mp4
 ```
 
 On Windows use `python` when `python3` is unavailable. Quote paths containing spaces. Run from this folder; input paths in JSON are always relative to the manifest itself, while `-o` is relative to the current working directory. Absolute local source paths also work. Use a new output name for each revision.
@@ -42,7 +42,7 @@ Example tech timeline (save beside your `originals/` folder):
 
 ```json
 {
-  "brand": "BuiltByKeys",
+  "brand": "nani",
   "workflow": "tech",
   "format": "16:9",
   "resolution": "1080p",
@@ -81,7 +81,7 @@ The full selected range is replayed. For a short replay of only the strike or sa
 | Field | Meaning |
 | --- | --- |
 | `workflow` | `tech` or `football`; selects a reusable preset. |
-| `brand` | Watermark text; defaults to BuiltByKeys. |
+| `brand` | Watermark text; defaults to nani. |
 | `format` | `16:9` or `9:16`; CLI `--format` overrides it. |
 | `resolution` | `1080p` or `4k`; CLI `--resolution` overrides it. |
 | `settings` | Optional overrides for fields in the workflow preset. |
@@ -131,7 +131,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 # Windows PowerShell: .venv\Scripts\Activate.ps1
 python3 -m pip install -r requirements-ai.txt
-python3 bbk.py transcribe projects/review/originals/talking-head.mp4 --model small --language en -o projects/review/talking-head.transcript.json
+python3 nani.py transcribe projects/review/originals/talking-head.mp4 --model small --language en -o projects/review/talking-head.transcript.json
 ```
 
 `faster-whisper` uses CTranslate2. A named model downloads model weights on first use (network access, storage and model-host access are needed). Use `--model /path/to/local-model-folder` for an already downloaded CTranslate2 model. CPU uses int8; `--device cuda` requires compatible NVIDIA/CUDA/cuDNN libraries. No video or audio is sent to a hosted AI API by this code. A model download contacts the model host. Model quality, hallucinations in silence, product names and timing need proofreading. Transcripts use source time, so they remain reusable across different cuts.
@@ -139,8 +139,8 @@ python3 bbk.py transcribe projects/review/originals/talking-head.mp4 --model sma
 ### Proposed tech jump cuts
 
 ```sh
-python3 bbk.py suggest-tech projects/review/originals/talking-head.mp4 -o projects/review/proposed.json
-python3 bbk.py plan projects/review/proposed.json
+python3 nani.py suggest-tech projects/review/originals/talking-head.mp4 -o projects/review/proposed.json
+python3 nani.py plan projects/review/proposed.json
 ```
 
 This uses FFmpeg silence detection, not a language model. Default threshold is -35 dB for at least 0.4 s, with 0.12 s retained at each edge. Tune `--threshold`, `--min-silence` and `--padding` for your microphone. It can cut quiet speech or keep noisy pauses. Review the resulting clip ranges, attach a source transcript to **each** relevant clip, and make creative selections before rendering. It does not remove filler words or choose the best take.
@@ -148,7 +148,7 @@ This uses FFmpeg silence detection, not a language model. Default threshold is -
 ### Football highlight candidates
 
 ```sh
-python3 bbk.py suggest-football projects/match/originals/match.mp4 --count 12 --before 6 --after 4 -o projects/match/candidates.json
+python3 nani.py suggest-football projects/match/originals/match.mp4 --count 12 --before 6 --after 4 -o projects/match/candidates.json
 ```
 
 This ranks 1-second audio RMS windows, spacing peaks by at least 12 seconds. It proposes unclassified review windows only. Commentary, crowd noise, whistles and music can all produce false positives; quiet goals, skills, tackles or saves can be missed. Candidate windows are not an edit manifest and do not render automatically. Watch the windows, classify the event, adjust buildup/aftermath and copy accepted ranges into a football manifest.

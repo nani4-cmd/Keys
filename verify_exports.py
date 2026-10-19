@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
-from bbk import ROOT,probe,run,digest,doctor
+from nani import ROOT,probe,run,digest,doctor
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)

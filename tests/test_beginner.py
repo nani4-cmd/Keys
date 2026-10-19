@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from bbk import ROOT,prepare
+from nani import ROOT,prepare
 from beginner import timestamp,parse_instructions,speech_selections,build_manifest,create_project
 
 SOURCE=ROOT/'examples/originals/tech-synthetic.mp4'

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""BuiltByKeys: non-destructive, manifest-driven FFmpeg editor. Python 3.10+."""
+"""nani: non-destructive, manifest-driven FFmpeg editor. Python 3.10+."""
 import argparse
 import array
 import copy
@@ -272,7 +272,7 @@ def overlays(m,clips,plan,folder):
     def add(a,b,style,text):
         if b>a:
             lines.append(f'Dialogue: 0,{ass_time(a)},{ass_time(b)},{style},,0,0,0,,{safe_text(text)}')
-    add(0,plan['duration'],'Brand',m.get('brand','BuiltByKeys'))
+    add(0,plan['duration'],'Brand',m.get('brand','nani'))
     captions=[]
     for c in clips:
         offset=c['timeline_start']
@@ -305,7 +305,7 @@ def render(args):
             raise ValueError(f'Refusing to overwrite: {f}')
     output.parent.mkdir(parents=True,exist_ok=True)
     hashes={str(f):digest(f) for f in infos}
-    with tempfile.TemporaryDirectory(prefix='.bbk-',dir=output.parent) as td:
+    with tempfile.TemporaryDirectory(prefix='.nani-',dir=output.parent) as td:
         folder=Path(td)
         for i,c in enumerate(clips):
             print(f"Rendering clip {i+1}/{len(clips)}: {c['source'].name} [{c['start']}, {c['end']}]",flush=True)
@@ -393,7 +393,7 @@ def suggest_tech(args):
     if duration-cursor>=0.15: ranges.append((cursor,duration))
     if not ranges:
         raise ValueError('No speech regions found; adjust threshold or select clips manually')
-    manifest={'brand':'BuiltByKeys','workflow':'tech','format':'16:9','resolution':'1080p',
+    manifest={'brand':'nani','workflow':'tech','format':'16:9','resolution':'1080p',
               'review_required':True,'notes':'Silence heuristics only. Review sentence boundaries and false cuts before render.',
               'clips':[{'source':str(source),'start':round(a,3),'end':round(b,3),'transition':'cut'} for a,b in ranges]}
     save_new(args.output,manifest)

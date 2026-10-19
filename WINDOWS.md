@@ -1,4 +1,4 @@
-# Run BuiltByKeys on Windows
+# Run nani on Windows
 
 ## Install once
 
@@ -18,16 +18,16 @@
    ffprobe -version
    ```
 
-4. Download the repository with **Code → Download ZIP**, then **Extract All** to a writable local folder such as `Documents\BuiltByKeys`. Before the PR is merged, select the PR's branch first; downloading `main` will only include the editor after merge. Alternatively clone and select the feature branch using Git.
+4. Download the repository with **Code → Download ZIP**, then **Extract All** to a writable local folder such as `Documents\nani`. Before the PR is merged, select the PR's branch first; downloading `main` will only include the editor after merge. Alternatively clone and select the feature branch using Git.
 
 Do not run from inside the ZIP, `Program Files`, or a protected folder. Keep footage on a drive with enough free space and a stable connection. Camera originals are referenced in place; keep a separate backup and do not move them while a project uses them. NTFS is recommended for the project's working/export folder because the renderer publishes files using hard links.
 
 ## Open the beginner editor
 
-Double-click **Start-BuiltByKeys.bat**, or open PowerShell in the extracted repository folder and run:
+Double-click **Start-nani.bat**, or open PowerShell in the extracted repository folder and run:
 
 ```powershell
-py -3 bbk.py doctor
+py -3 nani.py doctor
 py -3 beginner.py
 ```
 
@@ -69,7 +69,7 @@ The folder name may be `Keys`, `Keys-<branch>` or whatever you named the extract
 The generated project is under `projects\<same-job-name>\edit.json`. For a later identical rerender without changing any JSON, use:
 
 ```powershell
-py -3 bbk.py render "projects\<job-name>\edit.json" -o "exports\my-rerender-v2.mp4"
+py -3 nani.py render "projects\<job-name>\edit.json" -o "exports\my-rerender-v2.mp4"
 ```
 
 Replace `<job-name>` with the actual folder. CLI outputs go exactly where `-o` points; relative paths start in your current terminal folder. Existing exports are refused, so choose a new name. The beginner app always creates a new job folder.
@@ -87,7 +87,7 @@ py -3 -m pip install -r requirements-ai.txt
 Then use **Add subtitles** in the app's instructions. It uses the `small` Whisper model on CPU, downloads weights on first use, and saves source-time transcripts inside the generated project. A first run needs model-host access and storage; the code sends no footage to a hosted AI API. Proofread names and timing. To select another model or use an already downloaded model folder, run the CLI:
 
 ```powershell
-py -3 bbk.py transcribe "C:\Videos\review.mp4" --model small --language en -o "review-transcript.json"
+py -3 nani.py transcribe "C:\Videos\review.mp4" --model small --language en -o "review-transcript.json"
 ```
 
 Then select that transcript in the app. The optional transcription model was not installed or run during this build's tests.
@@ -99,8 +99,8 @@ Large MP4s are intentionally absent from Git. Generate the synthetic samples loc
 ```powershell
 py -3 make_samples.py
 py -3 -m unittest discover -s tests -v
-py -3 bbk.py render examples\tech.json -o exports\tech-demo.mp4
-py -3 bbk.py render examples\football.json -o exports\football-demo.mp4
+py -3 nani.py render examples\tech.json -o exports\tech-demo.mp4
+py -3 nani.py render examples\football.json -o exports\football-demo.mp4
 py -3 verify_exports.py --report current-validation.json
 ```
 

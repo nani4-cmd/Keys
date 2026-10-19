@@ -5,7 +5,7 @@ import sys
 import tempfile
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from bbk import ROOT,prepare,overlays,focus_expr,tempo,doctor,render
+from nani import ROOT,prepare,overlays,focus_expr,tempo,doctor,render
 from argparse import Namespace
 
 class TimelineTests(unittest.TestCase):

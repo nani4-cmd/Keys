@@ -21,7 +21,7 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
-.bbk-*/
+.nani-*/
 *.tmp
 *.log
 tests/results.txt

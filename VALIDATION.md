@@ -1,4 +1,4 @@
-BuiltByKeys validation — 19 October 2026
+nani validation — 19 October 2026
 
 Python 3.12.14; FFmpeg / FFprobe 7.1.5.
 8 unit tests passed. 7 complete MP4 exports passed all verification checks.
@@ -35,3 +35,11 @@ python3 -m unittest discover -s tests -v
 ```
 
 After rendering local MP4s, use `python3 verify_exports.py --report current-validation.json` to create new evidence without replacing the preserved initial `validation.json`.
+
+## nani rename verification
+
+The current application's title, visible labels, default watermark, generated captions/examples, Windows launcher, command-line module, temporary-file prefix and documentation use **nani**. The command-line entry point is `nani.py`; the Windows launcher is `Start-nani.bat`.
+
+After renaming, all **17 tests passed**. A new 1080 × 1920, 50 fps football sample with an appended half-speed replay rendered successfully and passed full decoding, codec, Rec.709 metadata, duration, audio/video sync and unchanged-source checks. The generated overlay uses the new name. Both workflow preset files are byte-for-byte unchanged, and the video-processing engine differs only in branding. Earlier synthetic fixtures and test exports were preserved outside the active application before generating newly branded samples.
+
+The latest render verification remains local in ignored `current-validation.json`. Windows desktop execution and optional Whisper inference were not tested in this Linux environment.
