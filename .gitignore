@@ -1,0 +1,32 @@
+# Private footage, generated exports, projects and transcriptions stay local.
+projects/
+exports/
+examples/originals/
+*.mp4
+*.MP4
+*.mov
+*.mkv
+*.avi
+*.m4v
+*.webm
+*.mts
+*.wav
+*.mp3
+*.zip
+*.transcript.json
+*-transcript.json
+/transcript*.json
+# Runtime files and temporary artifacts.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.nani-*/
+*.tmp
+*.log
+tests/results.txt
+.DS_Store
+Thumbs.db
+
+# User-generated validation reports (historical evidence is intentionally tracked).
+current-validation.json

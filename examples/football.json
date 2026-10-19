@@ -1,0 +1,87 @@
+{
+  "brand": "nani",
+  "workflow": "football",
+  "format": "16:9",
+  "resolution": "1080p",
+  "notes": "Events are manually labelled synthetic test windows, not automatically detected actions.",
+  "clips": [
+    {
+      "source": "originals/football-synthetic.mp4",
+      "start": 0.5,
+      "end": 2,
+      "event": "skill",
+      "label": "SKILL \u00b7 TEST",
+      "focus": [
+        {
+          "time": 0,
+          "x": 0.18,
+          "y": 0.5
+        },
+        {
+          "time": 1.5,
+          "x": 0.3,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "source": "originals/football-synthetic.mp4",
+      "start": 3.5,
+      "end": 5,
+      "event": "goal",
+      "label": "GOAL \u00b7 TEST",
+      "replay": true,
+      "replay_speed": 0.5,
+      "focus": [
+        {
+          "time": 0,
+          "x": 0.37,
+          "y": 0.5
+        },
+        {
+          "time": 1.5,
+          "x": 0.48,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "source": "originals/football-synthetic.mp4",
+      "start": 6,
+      "end": 7.2,
+      "event": "tackle",
+      "label": "TACKLE \u00b7 TEST",
+      "focus": [
+        {
+          "time": 0,
+          "x": 0.52,
+          "y": 0.5
+        },
+        {
+          "time": 1.2,
+          "x": 0.62,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "source": "originals/football-synthetic.mp4",
+      "start": 8.5,
+      "end": 10,
+      "event": "save",
+      "label": "SAVE \u00b7 TEST",
+      "focus": [
+        {
+          "time": 0,
+          "x": 0.68,
+          "y": 0.5
+        },
+        {
+          "time": 1.5,
+          "x": 0.8,
+          "y": 0.5
+        }
+      ]
+    }
+  ]
+}

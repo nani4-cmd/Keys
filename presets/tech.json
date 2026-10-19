@@ -1,0 +1,6 @@
+{
+  "fps": 30, "crf": 18, "encoder_preset": "medium",
+  "transition": "cut", "transition_seconds": 0.2,
+  "audio_cleanup": "speech", "loudness_lufs": -16, "true_peak_db": -1.5, "loudness_range": 7,
+  "contrast": 1.04, "brightness": 0.0, "saturation": 1.05, "gamma": 1.0
+}

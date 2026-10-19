@@ -1,0 +1,59 @@
+{
+  "brand": "nani",
+  "workflow": "tech",
+  "format": "16:9",
+  "resolution": "1080p",
+  "notes": "Synthetic fixture. Replace sources and source-time captions for your own footage.",
+  "clips": [
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 0,
+      "end": 2.5,
+      "label": "HARDWARE REVIEW",
+      "captions": [
+        {
+          "start": 0.2,
+          "end": 2.2,
+          "text": "nani \u00b7 The desk test"
+        }
+      ]
+    },
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 4,
+      "end": 6.5,
+      "label": "PRODUCT B-ROLL",
+      "transition": "fade",
+      "zoom_end": 1.15,
+      "focus": [
+        {
+          "time": 0,
+          "x": 0.65,
+          "y": 0.5
+        }
+      ],
+      "captions": [
+        {
+          "start": 4.2,
+          "end": 6.2,
+          "text": "A closer look at the setup."
+        }
+      ]
+    },
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 9,
+      "end": 11.5,
+      "label": "FINAL TAKE",
+      "transition": "cut",
+      "zoom": 1.08,
+      "captions": [
+        {
+          "start": 9.2,
+          "end": 11.2,
+          "text": "Cut pauses. Keep the useful details."
+        }
+      ]
+    }
+  ]
+}

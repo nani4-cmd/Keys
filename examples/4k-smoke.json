@@ -1,0 +1,15 @@
+{
+  "workflow": "tech",
+  "resolution": "4k",
+  "settings": {
+    "encoder_preset": "veryfast"
+  },
+  "clips": [
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 0,
+      "end": 1,
+      "label": "4K UPSCALE \u00b7 FORMAT TEST"
+    }
+  ]
+}
