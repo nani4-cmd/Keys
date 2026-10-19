@@ -1,0 +1,2 @@
+# Optional only. Core editing uses Python standard library and system FFmpeg.
+faster-whisper>=1.1,<2

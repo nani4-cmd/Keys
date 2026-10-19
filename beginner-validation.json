@@ -1,0 +1,41 @@
+{
+  "tools": {
+    "python": "3.12.14",
+    "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers",
+    "required_filters_and_encoders": "PASS",
+    "faster_whisper_installed": false
+  },
+  "exports": [
+    {
+      "file": "exports/beginner-smoke-20261019-112509-3a7878/finished.mp4",
+      "probe": {
+        "duration": 1.0,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30.0,
+        "video_codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": true,
+        "audio_codec": "aac",
+        "transfer": "bt709",
+        "primaries": "bt709",
+        "colorspace": "bt709",
+        "rotation": 0
+      },
+      "checks": {
+        "dimensions": true,
+        "h264_aac": true,
+        "pixel_format": true,
+        "fps": true,
+        "rec709_tags": true,
+        "timeline_duration": true,
+        "audio_video_duration_sync": true,
+        "originals_unchanged": true,
+        "full_decode": true
+      },
+      "pass": true
+    }
+  ],
+  "all_pass": true
+}

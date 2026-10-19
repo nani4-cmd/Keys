@@ -1,0 +1,23 @@
+{
+  "source": "originals/football-synthetic.mp4",
+  "method": "audio energy; not semantic event detection",
+  "notes": "Crowd noise, commentary, music or whistles can dominate. Goals, skills, tackles and saves require manual classification or a trained sports model.",
+  "candidates": [
+    {
+      "time": 4.5,
+      "score_rms": 2336.69,
+      "type": "unclassified",
+      "review_required": true,
+      "start": 3.5,
+      "end": 5.5
+    },
+    {
+      "time": 9.5,
+      "score_rms": 2072.61,
+      "type": "unclassified",
+      "review_required": true,
+      "start": 8.5,
+      "end": 10.5
+    }
+  ]
+}

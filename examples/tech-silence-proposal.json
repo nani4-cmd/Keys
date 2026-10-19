@@ -1,0 +1,28 @@
+{
+  "brand": "BuiltByKeys",
+  "workflow": "tech",
+  "format": "16:9",
+  "resolution": "1080p",
+  "review_required": true,
+  "notes": "Silence heuristics only. Review sentence boundaries and false cuts before render.",
+  "clips": [
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 0,
+      "end": 3.127,
+      "transition": "cut"
+    },
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 3.891,
+      "end": 8.12,
+      "transition": "cut"
+    },
+    {
+      "source": "originals/tech-synthetic.mp4",
+      "start": 8.883,
+      "end": 12.0,
+      "transition": "cut"
+    }
+  ]
+}
